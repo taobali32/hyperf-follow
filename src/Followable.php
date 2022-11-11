@@ -32,11 +32,10 @@ class Followable extends Model
         parent::__construct($attributes);
     }
 
-    public function saving(Saving $event)
+    public function saving(Saving $follower)
     {
         $userForeignKey = config('follow.user_foreign_key', 'user_id');
         $follower->setAttribute($userForeignKey, $follower->{$userForeignKey} ?: auth()->id());
-
     }
 
     public function followable(): MorphTo
@@ -56,7 +55,7 @@ class Followable extends Model
 
     public function scopeWithType(Builder $query, string $type): Builder
     {
-        return $query->where('followable_type', app($type)->getMorphClass());
+        return $query->where('followable_type', (new $type)->getMorphClass());
     }
 
     public function scopeOf(Builder $query, Model $model): Builder
