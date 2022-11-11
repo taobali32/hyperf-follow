@@ -115,7 +115,7 @@ trait Follower
                 $returnFirst = true;
                 $followables = collect([$followables]);
                 break;
-            case $followables instanceof \Hyperf\Paginator\LengthAwarePaginator;
+            case $followables instanceof \Hyperf\Paginator\LengthAwarePaginator:
                 $followables = $followables->getCollection();
                 break;
             case $followables instanceof \Hyperf\Paginator\Paginator:
