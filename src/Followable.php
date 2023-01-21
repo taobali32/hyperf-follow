@@ -45,7 +45,7 @@ class Followable extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('auth.providers.users.model'), config('follow.user_foreign_key', 'user_id'));
+        return $this->belongsTo(config('follow.user_model'), config('follow.user_foreign_key', 'user_id'));
     }
 
     public function follower(): BelongsTo

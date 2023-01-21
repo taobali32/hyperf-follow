@@ -73,7 +73,7 @@ trait Followable
     public function followers(): BelongsToMany
     {
         return $this->belongsToMany(
-            config('auth.providers.users.model'),
+            config('follow.user_model'),
             config('follow.followables_table', 'followables'),
             'followable_id',
             config('follow.user_foreign_key', 'user_id')
